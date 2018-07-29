@@ -1,0 +1,23 @@
+<html>
+    <head>
+        <title>Curso Javascript</title>
+    </head>
+    <body>
+        <script>
+            function sexo(sexo) {
+                // Switch é melhor usado quando verificamos uma
+                //  unica variável multiplas vezes.
+                switch(sexo){
+                    case 'M':
+                        return "Masculino";
+                    case "F":
+                        return "Feminino";
+                    default:
+                        return "Outro";
+                }
+            }
+
+            console.log(sexo("F"));
+        </script>
+    </body>
+</html>

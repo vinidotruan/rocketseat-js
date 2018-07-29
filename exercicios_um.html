@@ -1,0 +1,145 @@
+<html>
+    <head>
+        <meta charset="utf8">
+        <title> Curso Javascript </title>
+    </head>
+    <body>
+        <script>
+            /**
+            * Exercício um.
+            */
+            var endereco = {
+                rua: 'Rua dos pinheiros',
+                numero: 1293,
+                bairro: 'Centro',
+                cidade: 'São Paulo',
+                uf: 'SP'
+            }
+
+            function informacoes( dados ) {
+                return "O usuário mora em "+dados.rua+" / "+dados.uf
+                +", no bairro "+dados.bairro+', na rua "'+dados.rua+'" com n° '+dados.numero;
+            }
+
+            // console.log(informacoes(endereco));
+
+            /**
+            * Exercício dois.
+            * Crie uma função que dado um intervalo 
+            * exiba todos número pares.
+            *
+            */
+            function pares(x, y) {
+                for(x; x <= y; x++) {
+                    if(( x % 2 ) == 0 ) {
+                        console.log(x);
+                    }
+                }
+            }
+
+            // console.log(pares(32, 321));
+
+            /**
+            * Exercício três.
+            * Escreva uma função que verifique se o vetor de habilidades passado 
+            * possui a habilidade "Javascript" e retorna 
+            * um booleano true/false caso exista ou não.
+            *
+            */
+            function temHabilidade(skills) {
+                for(x = 0; x <= skills.length; x++) {
+                    return (skills[x] == 'Javascript')? true: false;
+                }
+            }
+
+            var skills = ['ReactJS', 'React Native']
+
+            // console.log(temHabilidade(skills));
+
+            /**
+            * Exercício quatro.
+            * 
+            * Escreva uma função que dado um total de anos de estudo 
+            * retorna o quão experiente o usuário é.
+            *
+            */
+            function experiencia(anos) {
+                if(anos >= 7) {
+                    return 'Jedi Master';
+                } else if( anos > 3 && anos <=6) {
+                    return 'Avançado';
+                } else if( anos >= 1 && anos <=3 ) {
+                    return 'Intermediário';
+                } else {
+                    return 'Iniciante';
+                }
+            }
+
+            var anosEstudo = 7;
+
+            // console.log(experiencia(anosEstudo));
+            // De 0-1 ano: Iniciante
+            // De 1-3 anos: Intermediário
+            // De 3-6 anos: Avançado
+            // De 7 acima: Jedi Master
+
+            /**
+            * Exercício cinco.
+            * 
+            * Para percorrer um vetor você deve utilizar a sintaxe for...of e para unir
+            * valores de um array com um separador utilize o join.
+            *
+            */
+            var usuarios = [
+                {
+                    nome: 'Diego',
+                    habilidades: ['Javascript', 'ReactJS', 'Redux']
+                },
+                {
+                    nome: 'Gabriel',
+                    habilidades: ['VueJS', 'Ruby on Rails', 'Elixir']
+                }
+            ];
+
+            // Basicamente um foreach, e o .join() serve para inserir um separador no array.
+            function habilidades(usuarios) {
+                for(let usuario of usuarios) {
+                    console.log(
+                        usuario.nome+' possui as habilidades: '+usuario.habilidades.join(', ')
+                    );
+                }
+            }
+
+            // habilidades(usuarios);
+            
+            /**
+            * Exercício quatro.
+            * 
+            * Em uma página crie uma função que dado um número de minutos crie um countdown 
+            * em tempo real (de segundo a segundo) até chegar em zero no formato 08:30:20.
+            *
+            */
+            function countdown(minutos) {
+                let hor = Math.trunc(minutos/60);
+                let min = (((minutos/60)%1)*60);
+                let seg = 0;
+                
+                setInterval(()=> {
+                    if(seg == 0) {
+                        min--;
+                        seg = 59;
+                    } else if(min == 0){
+                        hor--;
+                        min=59;
+                    } else {
+                        seg--;
+                    }
+                console.log(hor+":"+min+":"+seg);
+                } , 1000);
+            }
+
+            countdown(1);
+            
+        </script>
+    </body>
+</html>
