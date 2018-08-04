@@ -47,12 +47,10 @@
             *
             */
             function temHabilidade(skills) {
-                for(x = 0; x <= skills.length; x++) {
-                    return (skills[x] == 'Javascript')? true: false;
-                }
+                return skills.includes('Javascript')
             }
 
-            var skills = ['ReactJS', 'React Native'];
+            var skills = ['ReactJS', 'React Native', 'Javascript'];
 
             // console.log(temHabilidade(skills));
 
@@ -139,7 +137,9 @@
                             seg--;
                         }
                         tempo--;
+                console.clear();
                 console.log(hor+":"+min+":"+seg);
+
                     }
                 } , 1000);
             }
