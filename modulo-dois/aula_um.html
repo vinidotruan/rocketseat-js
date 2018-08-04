@@ -1,0 +1,22 @@
+<html>
+    <head>
+        <title>Curso JavaScript</title>
+        <meta charset="utf8">
+    </head>
+    <body>
+        <div>
+            <button onclick="mostrarAlerta()" onmouseover="mostrarConsole()">Me pressione </button>
+        </div>
+        <script>
+            var i = 0;
+            function mostrarAlerta() {
+                alert('Hey, você clicou nesse botão aí');
+            }
+
+            function mostrarConsole() {
+                i++;
+                console.log('Hey cara, você passou pela '+i+'° vez já.');
+            }
+        </script>
+    </body>
+</html>
