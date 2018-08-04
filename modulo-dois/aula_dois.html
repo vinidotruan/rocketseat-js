@@ -1,0 +1,49 @@
+<html>
+    <head>
+        <meta charset="utf8">
+        <title>Curso JavaScript</title>
+    </head>
+    <body>
+        <div id='app'>
+            <input type='text' class='nome' id='nome' placeholder="Nome" autocomplete="off">
+            <input type='text' class='numero' id='numero' placeholder="Telefone" autocomplete="off">
+            <button class='botao'> Aperta aqui</button>
+        </div>        
+        <script>
+            //  Podes pegar um elemento do html através do Id.
+            var inputUm = document.getElementById('nome');
+            console.log(inputUm);
+
+            // Da sua Classe, onde sempre retornará uma collection pois 
+            // a classe não é única.
+            var inputDois = document.getElementsByClassName('nome')[0];
+            console.log(inputDois);
+
+            // Também podemos pegar um elemento do DOM através do seu tagname
+            // que também retornará uma collection pois nem sempre
+            // haverá um input apenas, por isso podemos referenciar
+            // a posição do item.
+            var inputTres = document.getElementsByTagName('input')[0];
+            console.log(inputTres);
+
+            // Um dos melhores jeitos de se pegar um elemento, pois
+            // podemos navegar dentro do html com ele.
+            var botao = document.querySelector('button.botao');
+            console.log(botao);
+
+            // Adicionando um evento, ou disparando um evento
+            // ao item selecionado.
+            botao.onclick = () => {
+                alert('botão pressionado');
+            }
+            
+            // Podemos pegar ainda todos os elemntos.
+            // document.querySelectorAll('input');
+            var input = document.querySelector('input#nome');
+            input.onkeydown = () => {
+                console.log('teste');
+            }
+            console.log(input);
+        </script>
+    </body>
+</html>
