@@ -1,0 +1,44 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+        <title> Curso Javascript</title>
+    </head>
+    <body>
+        <div id="app">
+            <input type="text" name="nome" id="nome">
+            
+            <div>
+                <ul class="listaFuncionarios" class="listaFuncionarios" id="listaFuncionarios">
+
+                </ul>
+            </div>
+        </div>
+        <script>
+            //  Aqui estamos criando uma tag a.
+            var a = document.createElement('a');
+
+            // Dizemos que a tag a, tem como atributo href
+            // o link do youtube.
+            a.setAttribute('href', 'https://www.youtube.com');
+
+            // Também podemos setar um atributo assim.
+            a.title = 'Link do youtube';
+
+            // você cria um texto para o elemento referenciado.
+            var texto = document.createTextNode('Acesse o youtube');
+            a.appendChild(texto);
+
+            // Aqui pega-se o contexto em que se se quer
+            // inserir a tag.
+            var div = document.querySelector('#app');
+
+            // E aqui a tag é inserida.
+            div.appendChild(a);
+
+            var input = document.querySelector('#nome');
+            // Remove um elemento do DOM. 
+            // div.removeChild(input);
+            
+        </script>
+    </body>
+</html>
