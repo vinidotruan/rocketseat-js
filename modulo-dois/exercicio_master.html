@@ -1,0 +1,138 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    </head>
+    <body>
+        <div id="master">
+            <ul id="pessoas"></ul>
+
+            <button onclick='ordenarNome()'>Ordenar por nome</button>
+            <button onclick='ordenarIdadade()'>Ordenar por Idade</button>
+
+            <button onclick='exibirHomens()'>Exibir apenas homens</button>
+            <button onclick='exibirMulheres()'>Exibir apenas mulheres</button>
+            <button onclick='montarLista()'>exibirTodos</button>
+
+        </div>
+        <script>
+            var usuarios = [
+                {
+                    nome: 'Diego',
+                    idade: 23,
+                    sexo: 'M',
+                },
+                {
+                    nome: 'José',
+                    idade: 30,
+                    sexo: 'M',
+                },
+                {
+                    nome: 'Gabriela',
+                    idade: 180,
+                    sexo: 'F',
+                },
+                {
+                    nome: 'Naira',
+                    idade: 27,
+                    sexo: 'F',
+                },
+                {
+                    nome: 'Maria',
+                    idade: 27,
+                    sexo: 'F',
+                },
+                
+            ];
+            
+            var pessoas = usuarios;
+            
+            let div = document.querySelector('div#master');
+            var ul = document.createElement('ul');
+            div.appendChild(ul);
+            
+
+            function montarLista(pessoas) {
+                let i = 0;
+                for (const pessoa of pessoas) {
+                    
+                    let li = document.createElement('li');
+                    li.id = i;
+
+                    if(pessoa.sexo == 'F') {
+                        texto = document.createTextNode(pessoa.nome+' é Mulher e possui '+pessoa.idade+' anos');
+                    } else {
+                        texto = document.createTextNode(pessoa.nome+' é Homem e possui '+pessoa.idade+' anos')
+                    }
+
+                    li.appendChild(texto);
+                    ul.appendChild(li);
+                    i++;
+                }
+            }
+
+            montarLista(usuarios);
+
+            function limparLista() {
+                while(ul.firstChild) ul.removeChild(ul.firstChild);
+            }
+
+            function ordenarNome()  {
+                
+                limparLista();
+
+                for (const usuario of usuarios) {
+
+                    for(const pessoa of pessoas) {
+
+                        // Posição de Diego
+                        let indexUsuario = pessoas.indexOf(usuario);
+
+                        // Posição de José
+                        let indexPessoa = pessoas.indexOf(pessoa);
+
+                        //  José > Diego = true
+                        //  José > Gabriela = true
+                        if( usuario.nome > pessoa.nome ) {
+
+                            //  1 < 0 = false
+                            //  1 < 3 = true
+                            if(indexUsuario < indexPessoa) {
+                                antigaPessoa = pessoa;
+                                // arr[3] = arr[1]
+                                pessoas[indexPessoa] = pessoas[indexUsuario];
+
+                                // arr[1] = arr[3]
+                                pessoas[indexUsuario] = antigaPessoa;
+                            }
+                        }
+                    }
+                }
+
+                montarLista(pessoas);
+            }
+            
+            function ordenarIdadade() {
+                limparLista();
+
+                for (const usuario of usuarios) {
+
+                    for(const pessoa of pessoas) {
+
+                        let indexUsuario = pessoas.indexOf(usuario);
+                        let indexPessoa = pessoas.indexOf(pessoa);
+
+                        if( usuario.idade > pessoa.idade ) {
+                            if(indexUsuario < indexPessoa) {
+                                antigaPessoa = pessoa;
+                                pessoas[indexPessoa] = pessoas[indexUsuario];
+                                pessoas[indexUsuario] = antigaPessoa;
+                            }
+                        }
+                    }
+                }
+                montarLista(pessoas);
+            }
+
+        </script>
+    </body>
+</html>

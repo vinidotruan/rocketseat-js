@@ -1,0 +1,116 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+        <title>Exercícios Javascript</title>
+    </head>
+    <body>
+        <div style="display:block">
+            <div id="um">
+                <h3>Exercício Um e Dois</h3>
+                <button id="botao">Me aperte</button>
+            </div>
+            <div id="dois">
+                <input type="text" name="nome" id="nome">
+                <button onclick="adicionar()">Adicionar</button>
+                <h3>Exercício Três e quatro</h3>
+                <ul id="ul"></ul>
+            </div>
+        </div>
+        <div id="master">
+
+        </div>
+        <script>
+            /**
+            * Exercício um:
+            * 
+            * Crie um botão que ao ser clicado cria um novo elemento 
+            * em tela com a forma de um quadrado vermelho com 100px 
+            * de altura e largura. Sempre que o botão for clicado 
+            * um novo quadrado deve aparecer na tela.
+            *
+            */
+            var divUm = document.querySelector('#um');
+            var botao = document.querySelector('#botao');
+            let i = 0;
+
+            botao.onclick = _ => {
+                var quadrado = document.createElement('div');
+                quadrado.setAttribute('id', i);
+                i++;
+                quadrado.style.width = 100;
+                quadrado.style.height = 100;
+                quadrado.style.backgroundColor = '#f00';
+
+                divUm.appendChild(quadrado);
+
+                quadrado.onmouseover = _ => {
+                    var newColor = getRandomColor();
+                    quadrado.style.backgroundColor = newColor;
+                }
+            }
+            
+            /**
+            * Exercício dois:
+            *
+            * Utilizando o resultado do primeiro desafio, toda vez que o usuário 
+            * passar o mouse por cima de algum quadrado troque sua cor para 
+            * uma cor aleatória gerada pela função abaixo:
+            *
+            */
+            function getRandomColor() {
+                var letters = '0123456789ABCDEF';
+                var color = '#';
+
+                for (var i = 0; i < 6; i++) {
+                    color += letters[Math.floor(Math.random() * 16)];
+                }
+                return color;
+            }
+
+            /**
+            *
+            * Exercício três.
+            *
+            * A partir do vetor preencha uma ul.
+            *
+            */
+            var nomes = ['Diego', 'Gabriel', 'Lucas'];
+
+            var ul = document.querySelector('ul');
+            
+            function listar() {
+                for (const nome of nomes) {
+                    let li = document.createElement('li');
+                    pessoa = document.createTextNode(nome)
+                    li.appendChild(pessoa);
+                    ul.appendChild(li);
+                }
+            }
+
+            listar();
+
+            /**
+            *
+            * Exercício Quatro.
+            *
+            * Ao clicar no botão, a função adicionar() deve ser disparada 
+            * adicionando um novo item a lista de nomes baseado no nome 
+            * preenchido no input e renderizando o novo item em tela 
+            * juntos aos demais itens anteriores. 
+            * Além disso, o conteúdo do input deve ser apagado após 
+            * o clique.
+            *
+            */ 
+            function adicionar() {
+                var nome = document.querySelector('input#nome').value;
+
+                while(ul.firstChild) ul.removeChild(ul.firstChild);
+
+                nomes.push(nome);
+                listar();
+
+                document.querySelector('input#nome').value = null;
+            }
+        </script>
+    </body>
+</html>
